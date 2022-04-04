@@ -3,3 +3,12 @@ body {
   text-align: center;
   font-family: "Roboto", sans-serif;
 }
+form {
+  margin: 0 auto;
+  background-color: grey;
+  height: 100vh;
+  width: 80vw;
+}
+.area {
+  display: block;
+}

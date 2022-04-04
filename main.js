@@ -10,7 +10,7 @@ let selecionado = false;
 //cria a caixa de opções 
 let perguntaBox = document.createElement('select');
 perguntaBox.setAttribute('class', 'pergunta');
-document.querySelector('body').appendChild(perguntaBox);
+//document.querySelector('body').appendChild(perguntaBox);
 
 //Cria as opções
 let display = document.createElement('option');
