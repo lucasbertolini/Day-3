@@ -4,7 +4,7 @@ let elementos = {
     areas:['Front-End', 'Back-End'],
     front:['React', 'Vue'],
     back:['Java', 'C#'],
-
+    tecnologias:[],
 }
 enviar.addEventListener('click', (e) => {
 
@@ -81,6 +81,8 @@ function change(){
             });
             document.querySelector('#select').addEventListener('change', ()=>{
                 futuro();
+                tecnologias();
+
             })
 
             break;
@@ -116,14 +118,14 @@ function change(){
 function futuro(){
     let futuro = document.querySelector('.fullstack');
     let texto = document.createElement('legend');
-    texto.setAttribute('id', 'continuar');
+    texto.setAttribute('id', 'continuar-legend');
     texto.textContent = 'Que legal! Você pensa em continuar estudando essa tecnologia ou pretende se tornar um desenvolvedor Full-Stack?';
     futuro.appendChild(texto);
 
     let continuar = document.createElement('input');
     continuar.setAttribute('type', 'radio');
     continuar.setAttribute('id', 'continuar');
-    continuar.setAttribute('name', 'continuar')
+    continuar.setAttribute('name', 'continuar');
     futuro.appendChild(continuar);
 
     let continuarTexto = document.createElement('label');
@@ -141,8 +143,24 @@ function futuro(){
     mudarTexto.setAttribute('for', 'full-stack');
     mudarTexto.textContent = 'Mudar para Full-Stack!!';
     futuro.appendChild(mudarTexto);
+}
+function tecnologias(){
+    const tecnologiasDiv = document.querySelector('.tecnologias')
+    const tec = document.createElement('input');
+    tec.setAttribute('type', 'text');
+    tec.setAttribute('id', 'tecnologias')
+    tecnologiasDiv.appendChild(tec);
 
-
+    const tecButton = document.createElement('button');
+    tecButton.setAttribute('id', 'tec-button');
+    tecButton.textContent = 'Adicionar';
+    tecnologiasDiv.appendChild(tecButton);
+    document.querySelector('#tec-button').addEventListener('click', (e)=>{
+        e.preventDefault()
+        let input = document.querySelector('#tecnologias');
+        elementos.tecnologias.push(input.value);
+        console.log(elementos.tecnologias);
+    })  
 }
 
 
