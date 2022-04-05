@@ -81,7 +81,7 @@ function change(){
             });
             document.querySelector('#select').addEventListener('change', ()=>{
                 futuro();
-                tecnologias();
+              //  tecnologias();
 
             })
 
@@ -126,6 +126,7 @@ function futuro(){
     continuar.setAttribute('type', 'radio');
     continuar.setAttribute('id', 'continuar');
     continuar.setAttribute('name', 'continuar');
+    continuar.setAttribute('onclick', 'tecnologias()');
     futuro.appendChild(continuar);
 
     let continuarTexto = document.createElement('label');
@@ -136,6 +137,7 @@ function futuro(){
     let mudar = document.createElement('input');
     mudar.setAttribute('type', 'radio');
     mudar.setAttribute('id', 'full-stack');
+    mudar.setAttribute('onclick', 'tecnologias()');
     mudar.setAttribute('name', 'continuar')
     futuro.appendChild(mudar);
 
@@ -146,21 +148,52 @@ function futuro(){
 }
 function tecnologias(){
     const tecnologiasDiv = document.querySelector('.tecnologias')
+
+    const tecTexto = document.createElement('legend');
+    tecTexto.textContent = 'Digite as tecnologias que gostaria de estudar!';
+    tecnologiasDiv.appendChild(tecTexto);
+
     const tec = document.createElement('input');
     tec.setAttribute('type', 'text');
     tec.setAttribute('id', 'tecnologias')
     tecnologiasDiv.appendChild(tec);
+    tec.focus();
 
     const tecButton = document.createElement('button');
     tecButton.setAttribute('id', 'tec-button');
     tecButton.textContent = 'Adicionar';
     tecnologiasDiv.appendChild(tecButton);
+    
+
+    const finalizar = document.createElement('button');
+    finalizar.setAttribute('id', 'finalizar');
+    finalizar.textContent = 'Finalizar';
+    tecnologiasDiv.appendChild(finalizar);
+
+
+
     document.querySelector('#tec-button').addEventListener('click', (e)=>{
         e.preventDefault()
         let input = document.querySelector('#tecnologias');
         elementos.tecnologias.push(input.value);
-        console.log(elementos.tecnologias);
+        input.value = ' ';
+        input.focus()
+
     })  
+
+    finalizar.addEventListener('click', (e)=>{
+        e.preventDefault();
+        let lista = document.createElement('ul');
+        document.querySelector('.lista').appendChild(lista);
+
+        elementos.tecnologias.forEach((number,index)=>{
+            console.log(elementos.tecnologias[index])
+            let elemento = document.createElement('li');
+            elemento.textContent = elementos.tecnologias[index];
+            document.querySelector('.lista').appendChild(elemento);
+        })
+
+    })
 }
 
 
