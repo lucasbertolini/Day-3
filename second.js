@@ -2,16 +2,24 @@ let enviar = document.querySelector('#submit');
 
 let elementos = {
     areas:['Front-End', 'Back-End'],
-    front:['React', 'Vue'],
-    back:['Java', 'C#'],
+    front:['Selecione uma opção','React', 'Vue'],
+    back:['Selecione uma opção','Java', 'C#'],
     tecnologias:[],
+    enviado:false,
 }
-enviar.addEventListener('click', (e) => {
+var framework = document.querySelector('#framework');
+var texto = document.createElement('legend');
 
+
+enviar.addEventListener('click', (e) => {
     e.preventDefault();
+
     let nome = document.querySelector('#nome').value
     let label = document.createElement('label');
     let form = document.querySelector('#atuacao');
+    let aviso = document.createElement('legend');
+
+    if(!nome)return
     label.setAttribute('class', 'area');
     label.textContent = `Bem-vindo ${nome}, selecione uma área de interesse.`;
     form.appendChild(label);
@@ -51,8 +59,7 @@ function change(){
     if(document.querySelector('select')){
         document.querySelector('#framework').removeChild(document.querySelector('select'));
     }
-    var framework = document.querySelector('#framework');
-    var texto = document.createElement('legend');
+
     
     switch (areaSelecionada) {
         case 'Front-End':
@@ -81,7 +88,6 @@ function change(){
             });
             document.querySelector('#select').addEventListener('change', ()=>{
                 futuro();
-              //  tecnologias();
 
             })
 
@@ -109,6 +115,10 @@ function change(){
                 option.setAttribute('id', index);
                 option.textContent = index;
                 caixa.appendChild(option);
+            })
+            document.querySelector('#select').addEventListener('change', ()=>{
+                futuro();
+
             })
 
             break;
@@ -185,6 +195,10 @@ function tecnologias(){
         e.preventDefault();
         let lista = document.createElement('ul');
         document.querySelector('.lista').appendChild(lista);
+
+        const titulo = document.createElement('legend');
+        titulo.textContent = 'Tecnologias que você gostaria de estudar:'
+        document.querySelector('.lista').appendChild(titulo);
 
         elementos.tecnologias.forEach((number,index)=>{
             console.log(elementos.tecnologias[index])
