@@ -40,13 +40,15 @@ enviar.addEventListener('click', (e) => {
         areaInput.setAttribute('for',index);
         areaInput.textContent =index;
         form.appendChild(areaInput);
+
         
     });
+    document.querySelector('#submit').disabled = true;
     document.querySelector('#submit').setAttribute('type', 'button');
 })
 function change(){
     let areaSelecionada
-    let selecionado = document.querySelectorAll('[type=radio]');
+    let selecionado = document.querySelectorAll('[type = radio]');
 
     //confere qual radio button foi selecionado
     for(const radioButton of selecionado ){
@@ -88,7 +90,9 @@ function change(){
                 select.appendChild(option);
             });
             document.querySelector('#select').addEventListener('change', ()=>{
+                document.querySelector('.fullstack').textContent = " ";
                 futuro();
+                
 
             })
 
@@ -118,6 +122,7 @@ function change(){
                 caixa.appendChild(option);
             })
             document.querySelector('#select').addEventListener('change', ()=>{
+                document.querySelector('.fullstack').textContent = " ";
                 futuro();
 
             })
@@ -188,6 +193,7 @@ function tecnologias(){
     document.querySelector('#tec-button').addEventListener('click', (e)=>{
         e.preventDefault()
         let input = document.querySelector('#tecnologias');
+        if(!input.value) return;
         elementos.tecnologias.push(input.value);
         input.value = ' ';
         input.focus()
@@ -196,6 +202,13 @@ function tecnologias(){
 
     finalizar.addEventListener('click', (e)=>{
         e.preventDefault();
+        if(!document.querySelector('#tecnologias').value) {
+            let elemento = document.createElement('legend');
+            elemento.textContent = 'Você não inseriu nenhuma tecnologia!!';
+            elemento.setAttribute('id', 'mensagem-erro');
+            document.querySelector('.lista').appendChild(elemento);
+            return;
+        }
         let lista = document.createElement('ul');
         document.querySelector('.lista').appendChild(lista);
 
@@ -210,6 +223,7 @@ function tecnologias(){
             document.querySelector('.lista').appendChild(elemento);
         })
         finalizar.disabled = true;
+        document.querySelector('.lista').removeChild(document.querySelector('#mensagem-erro'));
 
     })
 }
