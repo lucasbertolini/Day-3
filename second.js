@@ -190,13 +190,21 @@ function tecnologias(){
 
 
 
-    document.querySelector('#tec-button').addEventListener('click', (e)=>{
-        e.preventDefault()
+    document.querySelector('#tec-button').addEventListener('click', (event)=>{
+        event.preventDefault()
         let input = document.querySelector('#tecnologias');
-        if(!input.value) return;
-        elementos.tecnologias.push(input.value);
-        input.value = ' ';
-        input.focus()
+        
+        if(input.value === ' '){
+            console.error('Campo vazio!!');
+            return;
+        }else if(input.value){
+            console.log(input.value);
+            elementos.tecnologias.push(input.value);
+            input.value = ' ';
+            input.focus()
+        }
+        
+        
 
     })  
 
@@ -217,7 +225,7 @@ function tecnologias(){
         document.querySelector('.lista').appendChild(titulo);
 
         elementos.tecnologias.forEach((number,index)=>{
-            console.log(elementos.tecnologias[index])
+            //console.log(elementos.tecnologias[index])
             let elemento = document.createElement('li');
             elemento.textContent = elementos.tecnologias[index];
             document.querySelector('.lista').appendChild(elemento);
