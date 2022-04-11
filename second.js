@@ -42,6 +42,7 @@ enviar.addEventListener('click', (e) => {
         form.appendChild(areaInput);
         
     });
+    document.querySelector('#submit').setAttribute('type', 'button');
 })
 function change(){
     let areaSelecionada
@@ -171,12 +172,14 @@ function tecnologias(){
 
     const tecButton = document.createElement('button');
     tecButton.setAttribute('id', 'tec-button');
+    tecButton.setAttribute('class', 'tec-button');
     tecButton.textContent = 'Adicionar';
     tecnologiasDiv.appendChild(tecButton);
     
 
     const finalizar = document.createElement('button');
     finalizar.setAttribute('id', 'finalizar');
+    finalizar.setAttribute('class', 'finalizar');
     finalizar.textContent = 'Finalizar';
     tecnologiasDiv.appendChild(finalizar);
 
