@@ -209,6 +209,7 @@ function tecnologias(){
             elemento.textContent = elementos.tecnologias[index];
             document.querySelector('.lista').appendChild(elemento);
         })
+        finalizar.disabled = true;
 
     })
 }
